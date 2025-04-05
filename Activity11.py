@@ -43,6 +43,27 @@ def calculate_sqrt():
         expression = ""
         messagebox.showerror("Calculation Error", f"Invalid Input or Expression:\n{e}")
 
+def calculate_trig(operation):
+    global expression
+    try:
+        value = float(expression)
+        if operation == "sin":
+            result = math.sin(value)
+        elif operation == "cos":
+            result = math.cos(value)
+        elif operation == "tan":
+            result = math.tan(value)
+        equation.set(str(result))
+        expression = str(result)
+    except ValueError:
+        equation.set("Error")
+        expression = ""
+        messagebox.showerror("Calculation Error", "Invalid input for trigonometric function.")
+    except Exception as e:
+        equation.set("Error")
+        expression = ""
+        messagebox.showerror("Calculation Error", f"An unexpected error occurred:\n{e}")
+
 
 window = tk.Tk()
 window.title("Functional Calculator")
